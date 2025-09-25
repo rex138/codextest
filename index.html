@@ -1,0 +1,46 @@
+ (cd "$(git rev-parse --show-toplevel)" && git apply --3way <<'EOF' 
+diff --git a//dev/null b/index.html
+index 0000000000000000000000000000000000000000..14b048b15b9f23fcdbfbafa71da0389460e8a91e 100644
+--- a//dev/null
++++ b/index.html
+@@ -0,0 +1,37 @@
++<!DOCTYPE html>
++<html lang="en">
++  <head>
++    <meta charset="UTF-8" />
++    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
++    <title>Library of Whispers - Interactive Adventure</title>
++    <link rel="stylesheet" href="styles.css" />
++  </head>
++  <body>
++    <main class="app">
++      <header class="app__header">
++        <h1 id="story-title" class="app__title">Interactive Adventure</h1>
++        <p class="app__subtitle">
++          Choose actions with the buttons below to explore every ending of this
++          markdown tale.
++        </p>
++      </header>
++      <section class="scene" aria-live="polite">
++        <h2 id="scene-title" class="scene__title"></h2>
++        <div id="scene-text" class="scene__text"></div>
++        <div id="choices" class="scene__choices" role="group" aria-label="Available choices"></div>
++        <div id="ending-banner" class="scene__ending" hidden>
++          <p class="scene__ending-text">This path reaches its conclusion.</p>
++        </div>
++      </section>
++      <footer class="app__footer">
++        <button id="back-button" class="app__nav-button" type="button" disabled>
++          ← Back
++        </button>
++        <button id="restart-button" class="app__nav-button" type="button">
++          Restart ↻
++        </button>
++      </footer>
++    </main>
++    <script src="app.js"></script>
++  </body>
++</html>
+ 
+EOF
+)
